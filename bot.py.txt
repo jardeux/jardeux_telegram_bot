@@ -1,0 +1,29 @@
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+
+# Botunuzun API Token'ını buraya yapıştırın
+API_TOKEN = '7814511686:AAHrsheojHY5SpZ5D_IwhQXl5djKi-JbwHA'
+
+# Start komutunu ele alır
+def start(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text('Merhaba! Ben bir Telegram botuyum. Bana mesaj gönder!')
+
+# Mesajlara yanıt verir
+def echo(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text(update.message.text)
+
+def main() -> None:
+    # Updater ve Dispatcher oluşturma
+    updater = Updater(API_TOKEN)
+    dispatcher = updater.dispatcher
+
+    # Komut ve mesaj işleyicileri ekleyin
+    dispatcher.add_handler(CommandHandler("start", start))
+    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
+
+    # Botu çalıştırma
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
