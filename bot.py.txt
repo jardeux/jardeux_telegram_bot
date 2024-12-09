@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
 # Botunuzun API Token'ını buraya yapıştırın
-API_TOKEN = '7814511686:AAHrsheojHY5SpZ5D_IwhQXl5djKi-JbwHA'
+API_TOKEN = 'API TOKEN'
 
 # Start komutunu ele alır
 def start(update: Update, context: CallbackContext) -> None:
